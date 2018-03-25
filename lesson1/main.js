@@ -10,7 +10,6 @@ mainList = {
 	open: true
 }
 
-
 for (var i = 0; i < 3; i++) {
 var ask = prompt("Какой тип товаров будем продавать?");
 mainList.shopGoods[i] = ask;
