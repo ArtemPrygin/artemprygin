@@ -24,3 +24,4 @@ var digits = num.toString().split('');
 var multiply = digits[0]*digits[1]*digits[2]*digits[3]*digits[4];
 console.log(multiply);
 alert(Math.pow(multiply, 3));
+
