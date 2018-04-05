@@ -33,34 +33,64 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
-let timerAnimation = setTimeout(myAnimation, 2000);
-function myAnimation() {
-	let block = document.getElementsByClassName('main-block')[0],
-		width = 1000,
-		height = 450,
-		timerWidth = setInterval(widthChange, 5),
-		timerHeight = setInterval(heightChange, 8);
+function animate(draw, duration) {
+    let start = performance.now();
+    requestAnimationFrame(function animate(time) {
+        let timePassed = time - start;
 
-		function widthChange() {
-			if(width == 750) {
-				clearInterval(timerWidth)
-			} else {
-				width--;
-				block.style.width = width + 'px';
-			}
-		};
+        if (timePassed > duration) {
+            timePassed = duration;
+        }
 
-		function heightChange() {
-			if(height == 300) {
-				clearInterval(timerHeight)
-			} else {
-				height--;
-				block.style.minHeight = height + 'px';
-			}
-		};
+        draw(timePassed);
 
-	timerAnimation = setTimeout(myAnimation, 2000);
-};
+        if (timePassed < duration) {
+            requestAnimationFrame(animate);
+        }
+        
+    })
+	};
+	let menu = document.getElementsByTagName('nav')[0];
+	 menu.addEventListener('click', function(event) {
+    event.preventDefault();
+    animate(function(timePassed) {
+        let target = event.target;
+      if (target.tagName = 'li') {
+        let section = document.getElementById(target.getAttribute('href').slice(1));
+          window.scrollBy(0, section.getBoundingClientRect().top / 20 - 3);
+      }  
+    }, 1500)
+    
+ })
+
+// let timerAnimation = setTimeout(myAnimation, 2000);
+// function myAnimation() {
+// 	let block = document.getElementsByClassName('main-block')[0],
+// 		width = 1000,
+// 		height = 450,
+// 		timerWidth = setInterval(widthChange, 5),
+// 		timerHeight = setInterval(heightChange, 8);
+
+// 		function widthChange() {
+// 			if(width == 750) {
+// 				clearInterval(timerWidth)
+// 			} else {
+// 				width--;
+// 				block.style.width = width + 'px';
+// 			}
+// 		};
+
+// 		function heightChange() {
+// 			if(height == 300) {
+// 				clearInterval(timerHeight)
+// 			} else {
+// 				height--;
+// 				block.style.minHeight = height + 'px';
+// 			}
+// 		};
+
+// 	timerAnimation = setTimeout(myAnimation, 2000);
+// };
 
 
-myAnimation()
+// myAnimation()
