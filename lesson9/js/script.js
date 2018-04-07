@@ -118,36 +118,32 @@ more.addEventListener('click', function(){
 
 console.log(descr);
 
-descr[0].addEventListener('click', function(){
+for (let i=0; i<descr.length; i++) {
+	descr[i].addEventListener('click', function(){
 	this.classList.add('more-splash');
-	overlay.style.transition = 'all 1s';
 	overlay.style.transform = 'translateX(0%)';
-	overlay.style.backgroundColor = 'rgba(0,0,0,1)';
 	document.body.style.overflow = 'hidden';
+});
+}
+
+descr[0].addEventListener('click', function(){
+	overlay.style.transition = 'all 1s';
+	overlay.style.backgroundColor = 'rgba(0,0,0,1)';
 });
 
 descr[1].addEventListener('click', function(){
-	this.classList.add('more-splash');
 	overlay.style.transition = 'all 2s';
-	overlay.style.transform = 'translateX(0%)';
 	overlay.style.backgroundColor = 'rgba(100,100,100,1)';
-	document.body.style.overflow = 'hidden';
 });
 
 descr[2].addEventListener('click', function(){
-	this.classList.add('more-splash');
 	overlay.style.transition = 'all 1.5s';
-	overlay.style.transform = 'translateX(0%)';
 	overlay.style.backgroundColor = 'rgba(199,0,0,1)';
-	document.body.style.overflow = 'hidden';
 });
 
 descr[3].addEventListener('click', function(){
-	this.classList.add('more-splash');
 	overlay.style.transition = 'all .5s';
-	overlay.style.transform = 'translateX(0%)';
 	overlay.style.backgroundColor = 'rgba(0,200,0,1)';
-	document.body.style.overflow = 'hidden';
 });
 
 
