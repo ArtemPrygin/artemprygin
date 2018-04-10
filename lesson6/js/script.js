@@ -1,123 +1,142 @@
-let openBtn = document.getElementById('open-btn'),
-	name = document.getElementsByClassName('name')[0],
-	nameValue = document.getElementsByClassName('name-value')[0],
-	budget = document.getElementsByClassName('budget')[0],
-	budgetValue = document.getElementsByClassName('budget-value')[0],
-	goods = document.getElementsByClassName('goods')[0],
-	goodsValue = document.getElementsByClassName('goods-value')[0],
-	items = document.getElementsByClassName('items')[0],
-	itemsValue = document.getElementsByClassName('items-value')[0],
-	employers = document.getElementsByClassName('employers')[0],
-	employersValue = document.getElementsByClassName('employers-value')[0],
-	discount = document.getElementsByClassName('discount')[0],
-	discountValue = document.getElementsByClassName('discount-value')[0],
-	isopen = document.getElementsByClassName('isopen')[0],
-	isopenValue = document.getElementsByClassName('isopen-value')[0],
-	goodsItem = document.getElementsByClassName("goods-item"),
-	goodsItemBtn = document.getElementsByTagName('button')[1],
-	countBudgetBtn = document.getElementsByTagName('button')[2],
-	hireEmployersBtn = document.getElementsByTagName('button')[3],
-	chooseItem = document.querySelector('.choose-item'),
-	timeValue = document.querySelector('.time-value'),
-	countBudgetValue = document.querySelector('.count-budget-value'),
-	hireEmployersItem = document.querySelectorAll(".hire-employers-item");
+let open = document.getElementById('open-btn'),
+				name_value = document.getElementsByClassName('name-value')[0],
+				budget_value = document.getElementsByClassName('budget-value')[0],
+				goods_value = document.getElementsByClassName('goods-value')[0],
+				items_value = document.getElementsByClassName('items-value')[0],
+				employers_value = document.getElementsByClassName('employers-value')[0],
+				discount_value = document.getElementsByClassName('discount-value')[0],
+				isopen_value = document.getElementsByClassName('isopen-value')[0],
 
-let money,
-	price;
+				goods_item = document.getElementsByClassName('goods-item'),
+				goods_btn = document.getElementsByTagName('button')[1],
+				budget_btn = document.getElementsByTagName('button')[2],
+				employers_btn = document.getElementsByTagName('button')[3],
+				choose_item = document.querySelector('.choose-item'),
+				time_value = document.querySelector('.time-value'),
+				count_budget_value = document.querySelector('.count-budget-value'),
+				hire_employers_item = document.querySelectorAll('.hire-employers-item'),
+				discount_radio_check = document.getElementsByName('discount-radio-check');
 
-openBtn.addEventListener('click', () => {
-	money = prompt("Ваш бюджет?", "");
-	while (isNaN(money) || money == '' || money == null) {
-		money = prompt("Ваш бюджет?", "");
-	}
-	budgetValue.textContent = money;
-	nameValue.textContent = prompt("Название вашего магазина?", "").toUpperCase();
+							
+
+let money,				
+				price;
+
+open.addEventListener('click', () => {
+				money = prompt("Ваш бюджет", "");
+				while (isNaN(money) || money == '' || money == null) {
+								money = prompt("Ваш бюджет?", "");
+				}
+				budget_value.textContent = money;
+				name_value.textContent= prompt("Название вашего магазина?", "").toUpperCase();				
 });
 
-goodsItemBtn.addEventListener('click', () => {
-	
-	for (let i=0; i<goodsItem.length; i++) {
-		let a = goodsItem[i].value;
+goods_btn.addEventListener('click', () => {
 
-		if ((typeof(a)) === 'string' && (typeof(a)) !=null && a.length <50) {
-			console.log("Все верно");
-			mainList.shopGoods[i] = a;
-			goodsValue.textContent = mainList.shopGoods;
-		}
-	}
+				for (let i = 0; i < goods_item.length; i++) {
+								let a = goods_item[i].value
+
+												if((typeof(a)) ==='string' && (typeof(a)) != null && a.length < 50) {
+																	console.log("Все верно");
+																	mainList.shopGoods[i] = a;
+																	goods_value.textContent = mainList.shopGoods;
+												} else {
+																	i = i - 1;
+												}
+				}
+
 });
 
+choose_item.addEventListener('change', () => {
+				let items = choose_item.value;
 
-chooseItem.addEventListener('change', () => {
-
-	let items = chooseItem.value;
-
-	if(isNaN(items) && items != '') {
-		mainList.shopItems = items.split(', ');
-		mainList.shopItems.sort();
-		itemsValue.textContent = mainList.shopItems;
-	}
+				if (isNaN(items) && items != '') {												
+								mainList.shopItems = items.split(',');				
+								mainList.shopItems.sort();
+								items_value.textContent = mainList.shopItems;
+				}
 });
 
-timeValue.addEventListener('change', () => {
+time_value.addEventListener('change', () => {
+				console.log(time_value.value);
+				let time = time_value.value;
 
-	let time = timeValue.value;
+				if (time < 0) {
+								console.log("Такого не может быть!");
+								mainList.open = false;									
+				} else if (time > 8 && time < 20) {
+								console.log("Время работать!");
+								mainList.open = true;								
+				} else if (time < 24) {
+								console.log("Уже слишком поздно!");
+								mainList.open = false;
+				} else {
+								console.log("В сутках только 24 часа!");
+								mainList.open = false;
+				}
 
-	if (time < 0) {
-		console.log('Такого не может быть!');
-		mainList.open = false;
-	} else if (time > 8 && time < 20) {
-		console.log('Время работать!');
-		mainList.open = true;
-		} else if (time < 24) {
-			console.log('Уже слишком поздно!');
-			mainList.open = false;
-			} else {
-				console.log('В сутках только 24 часа!');
-				mainList.open = false;
+				if (mainList.open == true) {
+								console.log('111111');
+								isopen_value.style.backgroundColor = 'green';
+				} else {
+								console.log('222222');
+								isopen_value.style.backgroundColor = 'red';
+				}
+});
+
+budget_btn.addEventListener('click', () => {		
+				count_budget_value.value = money / 30;						
+});
+
+employers_btn.addEventListener('click', () => {
+				employers_value.textContent = "";
+				for (let i = 0; i < hire_employers_item.length; i++) {
+								let name = hire_employers_item[i].value;
+								mainList.employers[i] = name;
+								employers_value.textContent += mainList.employers[i] + ', ';
+				}
+});
+
+discount_radio_check.addEventListener('click', function() {
+				if (discount_radio_check[0].checked) {
+								discount_value.style.backgroundColor = 'green';
+								count_budget_value.value = (money / 30) * 0.8;
+				} else {
+								discount_value.style.backgroundColor = 'red';
+								count_budget_value.value = money / 30;
 				};
-
-	if (mainList.open == true) {
-		isopenValue.style.backgroundColor = 'green';
-	} else {
-		isopenValue.style.backgroundColor = 'red';
-	}
 });
-
-countBudgetBtn.addEventListener('click', () => {
-	countBudgetValue.value = money / 30;
-	discountValue.style.fontWeight = '700';
-	if (countBudgetValue.value < 10 || countBudgetValue.value == '') {
-		mainList.discount = false;
-		discountValue.style.fontSize = '11px';
-		discountValue.textContent = 'Для скидки бюджет должен быть больше 10'
-	} else {
-		mainList.discount = true;
-		discountValue.style.backgroundColor = 'green';
-		discountValue.style.fontSize = '13px';
-		discountValue.textContent = 'Ваша скидка: ' + Math.round(countBudgetValue.value*.1) + ' у.е.'
-	}
-});
-
-hireEmployersBtn.addEventListener('click', () => {
-
-	for (let i=0; i < hireEmployersItem.length; i++) {
-		let name = hireEmployersItem[i].value;
-		mainList.employers[i] = name;
-		employersValue.textContent += mainList.employers[i] + ', ';
-	}
-});
-
-
 
 const mainList = {
-	budget: money,
-	shopName: name,
-	shopGoods: [],
-	employers: {},
-	open: false,
-	discount: false,
-	shopItems: []
-};
+				budget: money,
+				shopName: name,
+				shopGoods: [],
+				employers: [],
+				open: false,
+				discount: false,
+				shopItems: [],
+}
 
-console.log(mainList);
+console.log(open);
+console.log(name_value);
+console.log(budget_value);
+console.log(goods_value);
+console.log(items_value);
+console.log(employers_value);
+console.log(discount_value);
+console.log(isopen_value);
+console.log(goods_item[0]);
+console.log(goods_item[1]);
+console.log(goods_item[2]);
+console.log(goods_item[3]);
+console.log(goods_btn);
+console.log(budget_btn);
+console.log(employers_btn);
+console.log(choose_item);
+console.log(time_value);
+console.log(count_budget_value);
+console.log(hire_employers_item[0]);
+console.log(hire_employers_item[1]);
+console.log(hire_employers_item[2]);
+console.log(discount_radio_check[0]);
+console.log(discount_radio_check[1]);
