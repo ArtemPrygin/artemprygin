@@ -138,23 +138,106 @@ window.addEventListener('DOMContentLoaded', function() {
 
     //MODAL
 
-    let more = document.querySelector('.more'),
+    // let more = document.querySelector('.more'),
+    //     overlay = document.querySelector('.overlay'),
+    //     close = document.querySelector('.popup-close'),
+    //     popup = document.querySelector('.popup'),
+    //     description = document.getElementsByClassName('description-btn'),
+    //     flag = false;
+
+    //     // overlay.style.transform = "translate(-350%)";
+
+
+    // more.addEventListener('click', function() {
+    //     overlay.style.display = 'block';
+    //     // overlay.style.transform = "translate(0%)";
+    //     overlay.classList.remove('fadeOut');
+    //     overlay.classList.add('fade');
+    //     // this.classList.add('more-splash');
+    //     // overlay.style.transition = 'all .5s';
+    //     // overlay.style.backgroundColor = 'rgba(0,0,0,.8)';
+    //     document.body.style.overflow = 'hidden';
+    //     flag = false;
+
+
+
+
+    // });
+    // for (let i = 0; i < description.length; i++) {
+    //     description[i].addEventListener('click', function() {
+    //         // this.classList.add = 'more-splash';
+    //         // overlay.style.transform = "translate(0%)";
+    //         document.body.style.overflow = 'hidden';
+    //         overlay.style.display = 'block';
+    //         overlay.classList.add('scaleUp');
+    //         // overlay.style.transition = 'all 1s';
+    //         // overlay.style.backgroundColor = 'rgba(0,0,0,.2)';
+    //         flag = true;
+    //     });
+
+    // }
+
+    // // description[0].addEventListener('click', function(){
+    // //     overlay.style.transition = 'all 1s';
+    // //     overlay.style.backgroundColor = 'rgba(0,0,0,.9)';
+    // // });
+
+
+    // close.addEventListener('click', function() {
+    //      document.body.style.overflow = '';
+    //     if(flag === false){
+    //         overlay.classList.remove('fade');
+    //             overlay.classList.add('fadeOut');
+    //             setTimeout(function(){
+    //                 overlay.style.display = 'none';
+    //        },2000);
+
+    //     }
+    //     else{
+            
+    //             overlay.classList.remove('scaleUp');
+    //             overlay.classList.add('scaleDown');
+    //             setTimeout(function(){
+    //                 overlay.style.display = 'none';
+    //        },2000);
+    //     }
+    //      // overlay.style.transform = "translate(-350%)";
+    //       // overlay.style.backgroundColor = 'rgba(0,0,0,.5)';
+    //       // overlay.classList.remove('splash');
+         
+    //        });
+
+
+
+    //      // overlay.style.transform = "translate(-350%)";
+    //       // overlay.style.backgroundColor = 'rgba(0,0,0,.5)';
+    //       // overlay.classList.remove('splash');
+         
+  
+     let more = document.querySelector('.more'),
         overlay = document.querySelector('.overlay'),
         close = document.querySelector('.popup-close'),
         popup = document.querySelector('.popup'),
-        description = document.getElementsByClassName('description-btn');
+        description = document.getElementsByClassName('description-btn'),
+        flag = 2;
 
-        overlay.style.transform = "translate(-350%)";
+        // overlay.style.transform = "translate(-350%)";
 
 
     more.addEventListener('click', function() {
-        // // overlay.style.display = 'block';
-        overlay.style.transform = "translate(0%)";
-        // overlay.classList.remove('fadeOut');
-        this.classList.add('more-splash');
-        overlay.style.transition = 'all .5s';
-        overlay.style.backgroundColor = 'rgba(0,0,0,.8)';
+        flag = 0;
+        console.log(flag)
+        overlay.style.display = 'block';
+        // overlay.style.transform = "translate(0%)";
+        overlay.classList.remove('scaleUp');
+        overlay.classList.remove('fadeOut');
+        overlay.classList.remove('scaleDown');
+        overlay.classList.add('fade');
+        // this.classList.add('more-splash');
+        // overlay.style.transition = 'all .5s';
+        // overlay.style.backgroundColor = 'rgba(0,0,0,.8)';
         document.body.style.overflow = 'hidden';
+       
 
 
 
@@ -162,123 +245,206 @@ window.addEventListener('DOMContentLoaded', function() {
     });
     for (let i = 0; i < description.length; i++) {
         description[i].addEventListener('click', function() {
-            this.classList.add = 'more-splash';
-            overlay.style.transform = "translate(0%)";
+            // this.classList.add = 'more-splash';
+            // overlay.style.transform = "translate(0%)";
+            flag = 1;
+            console.log(flag)
             document.body.style.overflow = 'hidden';
-            overlay.style.transition = 'all 1s';
-            overlay.style.backgroundColor = 'rgba(0,0,0,.2)';
+            overlay.style.display = 'block';
+            overlay.classList.remove('fade');
+            overlay.classList.remove('fadeOut');
+            overlay.classList.remove('scaleDown');
+            overlay.classList.add('scaleUp');
+
+            // overlay.style.transition = 'all 1s';
+            // overlay.style.backgroundColor = 'rgba(0,0,0,.2)';
+            
         });
 
     }
 
-    description[0].addEventListener('click', function(){
-        overlay.style.transition = 'all 1s';
-        overlay.style.backgroundColor = 'rgba(0,0,0,.9)';
-    });
+    // description[0].addEventListener('click', function(){
+    //     overlay.style.transition = 'all 1s';
+    //     overlay.style.backgroundColor = 'rgba(0,0,0,.9)';
+    // });
+
 
     close.addEventListener('click', function() {
-         overlay.style.transform = "translate(-350%)";
-          overlay.style.backgroundColor = 'rgba(0,0,0,.5)';
-          overlay.classList.remove('splash');
-          document.body.style.overflow = '';
+         document.body.style.overflow = '';
+         console.log(flag)
+        if(flag < 1){
+            overlay.classList.remove('fade');
+            overlay.classList.remove('scaleDown');
+            overlay.classList.remove('scaleUp');
+            overlay.classList.add('fadeOut');
+                setTimeout(function(){
+                    overlay.style.display = 'none';
+           },2000);
+
+        }
+        else{
+                overlay.classList.remove('fade');
+                overlay.classList.remove('scaleDown');
+                overlay.classList.remove('scaleUp');
+                overlay.classList.add('scaleDown');
+                setTimeout(function(){
+                    overlay.style.display = 'none';
+           },2000);
+        }
+         // overlay.style.transform = "translate(-350%)";
+          // overlay.style.backgroundColor = 'rgba(0,0,0,.5)';
+          // overlay.classList.remove('splash');
+         
            });
 
 
-    // Отправка формы
 
-    let message = new Object();
-    message.loading = "Загрузка....";
-    message.success = "Спасибо, за вами выехали";
-    message.failure = "Что-то пошло не так";
+         // overlay.style.transform = "translate(-350%)";
+          // overlay.style.backgroundColor = 'rgba(0,0,0,.5)';
+          // overlay.classList.remove('splash');
+         
+  
+//FORM
 
-    let form = document.getElementsByClassName('main-form')[0],
-        formFooter = document.getElementsByClassName('contact-form')[0],
-        input = form.getElementsByTagName('input'),
-        inputFooter = formFooter.getElementsByTagName('input');
-        statusMessage = document.createElement('div');
-        overlayMessage = document.createElement('div');
-        buttonMessage = document.createElement('button');
-        statusMessage.classList.add('status');
-        overlayMessage.classList.add('status-overlay');
-        buttonMessage.classList.add('status-button');
+let message = new Object();
+message.loading = "Загрузка...";
+message.success = 'Спасибо! Скоро мы с вами свяжемся!';
+message.failure = 'Что-то пошло не так...';
 
-        buttonMessage.addEventListener('click', function() {
-            statusMessage.style.display = 'none';
-            overlayMessage.style.display = 'none';
-            document.body.style.overflow = '';
-        });
+let form = document.getElementsByClassName('main-form')[0],
+    input = form.getElementsByTagName('input'),
+    statusMessage = document.createElement('div'),
+    contactForm = document.getElementById('form'),
+    contactInput = contactForm.querySelectorAll('input');
+    statusMessage.classList.add('status');
+    
 
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        document.body.style.overflow = 'hidden';
-        let request = new XMLHttpRequest();
-        request.open("POST", "server.php");
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-        let formData = new FormData(form);
-        request.send(formData);
-        request.onreadystatechange = function() {
-            if(request.readyState < 4) {
-                statusMessage.innerHTML = '';
-            } else if (request.readyState === 4) {
-                if (request.status == 200) {
-                    statusMessage.style.display = 'flex';
-                    overlayMessage.style.display = 'block';
-                    document.body.appendChild(overlayMessage);
-                    document.body.appendChild(statusMessage);                    
-                    buttonMessage.innerHTML = 'Всё с вами понятно';
-                    statusMessage.innerHTML = message.success;
-                    statusMessage.appendChild(buttonMessage);
-                    overlay.style.transform = "translate(-350%)";
 
-                } else {
-                    statusMessage.innerHTML = message.failure;
-                    document.body.style.overflow = '';
-                }
+    form.addEventListener('submit', function(event){
+
+    event.preventDefault();
+
+    form.appendChild(statusMessage);
+   
+
+    //AJAX
+
+    let request = new XMLHttpRequest();
+    request.open('POST', 'server.php');
+
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // подготовка данных к отправке
+    let formData = new FormData(form);
+    request.send(formData);
+
+    request.onreadystatechange = function(){
+        if(request.readyState < 4){
+            statusMessage.inerHTML = message.loading;
+        }
+        else if(request.readyState === 4){
+            if(request.status == 200 && request.status < 300){
+                statusMessage.innerHTML = message.success;
+                statusMessage.innerHTML = '<img src=\'img/ajax-loader.gif\'> ' + ' ' + message.success + ' '+ '<img src=\'img/ajax-loader.gif\'> ';
+                statusMessage.style.cssText=`\
+            text-align: center; \
+            margin-top: '20px'; \
+            display: flex; \
+            justify-content: space-around; \
+            align-items: center;\
+       
+      `;
+                statusMessage.style.textAlign = 'center';
+                statusMessage.style.marginTop = '50px';
+            }
+            else{
+                statusMessage.innerHTML = message.failure;
             }
         }
+    }
 
-        for (let i=0; i<input.length; i++) {
+    for(let i = 0; i < input.length; i++){
+        input[i].value = '';
 
-            input[i].value = '';
+    }
+     close.addEventListener('click', function() {
+         statusMessage.innerHTML = '';
+     });
+});
+
+
+
+
+    // CONTACT FORM
+
+
+    contactForm.addEventListener('submit', function(event){
+
+    event.preventDefault();
+
+    contactForm.appendChild(statusMessage);
+   
+
+
+    //AJAX
+
+
+ let contactFormData;
+    for(let i = 0; i < contactInput.length; i++){
+        contactFormData += contactInput[i].value + ' ';
+        console.log(contactFormData);
+
+    }
+
+let json = JSON.stringify(contactFormData);
+console.log(json);
+
+    let request = new XMLHttpRequest();
+    request.open('POST', 'server.php');
+
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // подготовка данных к отправке
+    let formData = new FormData(contactForm);
+    request.send(json);
+
+    request.onreadystatechange = function(){
+        if(request.readyState < 4){
+            statusMessage.inerHTML = message.loading;
         }
-    });
-
-    formFooter.addEventListener('submit', function(event) {
-        event.preventDefault();
-        document.body.style.overflow = 'hidden';
-        let request = new XMLHttpRequest();
-        request.open("POST", "server.php");
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-        let formData = new FormData(formFooter);
-        request.send(formData);
-        request.onreadystatechange = function() {
-            if(request.readyState < 4) {
-                statusMessage.innerHTML = '';
-            } else if (request.readyState === 4) {
-                if (request.status == 200) {
-                    statusMessage.style.display = 'flex';
-                    overlayMessage.style.display = 'block';
-                    document.body.appendChild(overlayMessage);
-                    document.body.appendChild(statusMessage);                    
-                    buttonMessage.innerHTML = 'Всё с вами понятно';
-                    statusMessage.innerHTML = message.success;
-                    statusMessage.appendChild(buttonMessage);
-                    overlay.style.transform = "translate(-350%)";
-
-                } else {
-                    statusMessage.innerHTML = message.failure;
-                    document.body.style.overflow = '';
-                }
+        else if(request.readyState === 4){
+            if(request.status == 200 && request.status < 300){
+                statusMessage.innerHTML = message.success;
+                statusMessage.innerHTML = '<img src=\'img/ajax-loader2.gif\'> ' + ' ' + message.success + ' '+ '<img src=\'img/ajax-loader2.gif\'> ';
+                statusMessage.style.cssText=`\
+            text-align: center; \
+            margin-top: '20px'; \
+            display: flex; \
+            justify-content: space-around; \
+            align-items: center;\
+            color: #fff; \
+       
+      `;
+                statusMessage.style.textAlign = 'center';
+                statusMessage.style.marginTop = '50px';
+            }
+            else{
+                statusMessage.innerHTML = message.failure;
             }
         }
+    }
 
-        for (let i=0; i<inputFooter.length; i++) {
 
-            inputFooter[i].value = '';
-        }
-    });
+    for(let i = 0; i < contactInput.length; i++){
+        contactInput[i].value = '';
+         setTimeout(function(){
+             statusMessage.innerHTML = '';
+           },2000);
+    }
+    
+
+});
 
 
 
