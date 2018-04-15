@@ -1,7 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 window.addEventListener('DOMContentLoaded', function() {
 
-	// let tab = require('../parts/tab.js');
+	let tab = require('../parts/tab.js');
 	let	ajax = require('../parts/ajax.js');
 	let	slider = require('../parts/slider.js');
 	let	calc = require('../parts/calc.js');
@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		timer();
 
 });
-},{"../parts/ajax.js":2,"../parts/calc.js":3,"../parts/modal.js":4,"../parts/scroll.js":5,"../parts/slider.js":6,"../parts/timer.js":7}],2:[function(require,module,exports){
+},{"../parts/ajax.js":2,"../parts/calc.js":3,"../parts/modal.js":4,"../parts/scroll.js":5,"../parts/slider.js":6,"../parts/tab.js":7,"../parts/timer.js":8}],2:[function(require,module,exports){
 function ajax() {
 
 
@@ -414,6 +414,46 @@ function slider() {
 
 	module.exports = slider;
 },{}],7:[function(require,module,exports){
+function tab() {
+
+	let tab = document.getElementsByClassName('info-header-tab'),
+	    tabContent = document.getElementsByClassName('info-tabcontent'),
+	    info = document.getElementsByClassName('info-header')[0];
+
+	function hideTabContent(a) {
+	    for (let i = a; i < tabContent.length; i++) {
+	        tabContent[i].classList.remove('show');
+	        tabContent[i].classList.add('hide');
+	    }
+	}
+
+	hideTabContent(1);
+
+	function showTabContent(b) {
+	    if (tabContent[b].classList.contains('hide')) {
+	        hideTabContent(0);
+	        tabContent[b].classList.remove('hide');
+	        tabContent[b].classList.add('show');
+
+	    }
+	}
+
+	info.addEventListener('click', function(event) {
+	    let target = event.target;
+	    if (target.className === 'info-header-tab') {
+	        for (let i = 0; i < tab.length; i++) {
+	            if (target === tab[i]) {
+	                showTabContent(i);
+	                break;
+	            }
+	        }
+	    }
+	});
+
+}
+
+module.exports = tab;
+},{}],8:[function(require,module,exports){
 function timer() {
 	
 

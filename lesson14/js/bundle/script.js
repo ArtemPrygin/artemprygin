@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-	// let tab = require('../parts/tab.js');
+	let tab = require('../parts/tab.js');
 	let	ajax = require('../parts/ajax.js');
 	let	slider = require('../parts/slider.js');
 	let	calc = require('../parts/calc.js');
