@@ -1,0 +1,15 @@
+body {
+	font-size: 14px;
+}
+
+@media print {
+	body {
+	font-size: 34px;
+}
+}
+
+@media not all and (max-width: 400px) {
+	body {
+		color:  red;
+	}
+}

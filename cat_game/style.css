@@ -1,0 +1,102 @@
+body {
+  margin: 100px;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+button {
+  font-family: "Roboto";
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  background-color: #FFE082;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  font-size: 20px;
+  outline: none;
+}
+button:hover {
+  background-color: #ffd34f;
+}
+
+button:focus, input:focus, a:focus, textarea:focus {
+  outline: none;
+}
+
+.sad-cat, .cat-prison, .cat-happy {
+  display: none;
+  text-align: center;
+}
+.sad-cat__btn, .cat-prison__btn, .cat-happy__btn {
+  display: block;
+  margin: auto;
+  font-family: "Roboto";
+  text-transform: uppercase;
+}
+
+.sad-cat {
+  display: block;
+}
+
+.overlay {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.modal-one, .modal-two, .modal-three {
+  position: fixed;
+  padding: 0 60px;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background-color: #fff;
+}
+.modal-one__input, .modal-two__input, .modal-three__input {
+  text-align: left;
+}
+.modal-one__input input[type="radio"], .modal-two__input input[type="radio"], .modal-three__input input[type="radio"] {
+  display: none;
+  outline: none;
+}
+.modal-one__input input[type="radio"]:checked + label::before, .modal-two__input input[type="radio"]:checked + label::before, .modal-three__input input[type="radio"]:checked + label::before {
+  background-color: #009adf;
+  border: 6px solid #fff;
+}
+.modal-one__input label, .modal-two__input label, .modal-three__input label {
+  cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+.modal-one__input label::before, .modal-two__input label::before, .modal-three__input label::before {
+  content: "";
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 1, 0.1);
+          box-shadow: 0 5px 10px rgba(0, 0, 1, 0.1);
+  background-color: #fff;
+  border: 6px solid #fff;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.modal-two, .modal-three {
+  display: none;
+}
+
+.modal-three {
+  width: 500px;
+}

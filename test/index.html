@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<title>Document</title>
+</head>
+<body>
+	
+	<!-- <img src="skin-1.png" class="ok" width="200" alt="">
+	<img src="skin-2.png" class="ok" width="200" alt="">
+	<img src="skin-3.png" class="ok" width="200" alt="">
+	<img src="skin-4.png" class="ok" width="200" alt="">
+
+	<div class="prevnext">
+		
+	</div>
+
+	<button>Мужик</button>
+	<button>Баба</button>
+
+<div class="boss">
+	<div class="main">
+		<div class="second">
+			<div class="third">
+				Текст
+			</div>
+		</div>
+	</div>
+</div>
+ -->
+
+
+   <input type="radio" name="browser" value="ie"> Internet Explorer<Br>
+   <input type="radio" name="browser" value="opera"> Opera<Br>
+   <input type="radio" name="browser" value="firefox"> Firefox<Br>
+   <button type="submit">Выбрать</button>
+   blabla
+
+
+<script>
+	let ie = document.getElementsByTagName('input')[0],
+		opera = document.getElementsByTagName('input')[1],
+		ff = document.getElementsByTagName('input')[2],
+		btn = document.getElementsByTagName('button')[0];
+		// age = prompt('Возраст', '12');
+
+	btn.addEventListener('click', function(){
+		console.log(ie.checked);
+		console.log(opera.checked);
+		console.log(ff.checked);
+		if (ie.checked == true && age>18) {
+			console.log(1)
+		} else {
+			console.log(2)
+		}
+	})
+		
+</script>
+
+	<!-- <script src="main.js"></script> -->
+</body>
+</html>
